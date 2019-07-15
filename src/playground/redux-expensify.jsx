@@ -80,18 +80,15 @@ const filtersReducerDefaultState = {
     startDate: 0,
     endDate: 0
 }
-console.log(filtersReducerDefaultState)
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
-    console.log(state)
     switch (action.type) {
         case 'SET_TEXT_FILTER':
-            console.log(action)
-            return Object.assign({}, state, { text: action.text })
+            // return Object.assign({}, state, { text: action.text })
             // The below spread operator does not work!?!?
-            // return {
-            //     ...state,
-            //     text: action.text
-            // }
+            return {
+                ...state,
+                text: action.text
+            }
         default:
             return state
     }
