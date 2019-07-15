@@ -38,9 +38,9 @@ const editExpense = (id, updates) => ({
 
 // SET_TEXT_FILTER
 
-const setTextFilter = (newFilter = '') => ({
+const setTextFilter = (text = '') => ({
     type: 'SET_TEXT_FILTER',
-    newFilter
+    text
 })
 
 // SORT_BY_DATE
@@ -77,17 +77,21 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
 const filtersReducerDefaultState = {
     text: '',
     sortBy: 'date',
-    startDate: undefined,
-    endDate: undefined
+    startDate: 0,
+    endDate: 0
 }
+console.log(filtersReducerDefaultState)
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
     console.log(state)
     switch (action.type) {
         case 'SET_TEXT_FILTER':
-            return {
-                ...state,
-                text: action.text
-            }
+            console.log(action)
+            return Object.assign({}, state, { text: action.text })
+            // The below spread operator does not work!?!?
+            // return {
+            //     ...state,
+            //     text: action.text
+            // }
         default:
             return state
     }
@@ -105,11 +109,11 @@ store.subscribe(() => {
     console.log(store.getState())
 })
 
-const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100 }))
-const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300 }))
+// const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100 }))
+// const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300 }))
 
-store.dispatch(removeExpense({ id:expenseOne.expense.id }))
-store.dispatch(editExpense(expenseTwo.expense.id, { amount: 1500 }))
+// store.dispatch(removeExpense({ id:expenseOne.expense.id }))
+// store.dispatch(editExpense(expenseTwo.expense.id, { amount: 1500 }))
 
 store.dispatch(setTextFilter('rent'))
 
