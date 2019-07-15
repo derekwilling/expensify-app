@@ -1,4 +1,4 @@
-# Indecision App
+# Expensify App
 This app was created by taking Andrew Mead's Complete React Developer Course on Udemy.
 
 ## Setup 
