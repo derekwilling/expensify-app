@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    entry: './src/playground/redux-expensify.jsx',
+    entry: './src/app.jsx',
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
@@ -9,7 +9,7 @@ module.exports = {
     module: {
         rules: [{
                 loader: 'babel-loader',
-                test: /\.jsx$/,
+                test: /\.js?x$/,
                 exclude: /(node_modules|bower_components)/
             }, {
                 test: /\.s?css$/,
